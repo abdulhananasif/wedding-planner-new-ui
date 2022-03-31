@@ -11,7 +11,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import LogoutIcon from "@mui/icons-material/Logout";
 import WidgetsIcon from "@mui/icons-material/Widgets";
 
-const Sidebar = ({ setSidebarHeight }) => {
+const Sidebar = () => {
   const [state, setState] = useState(false);
   const ref = useRef(null);
   const toggleDrawer = (open) => (event) => {
@@ -24,9 +24,6 @@ const Sidebar = ({ setSidebarHeight }) => {
 
     setState(open);
   };
-  useEffect(() => {
-    setSidebarHeight(ref.current.clientHeight);
-  }, []);
   const list = () => (
     <Box
       sx={{
@@ -66,7 +63,14 @@ const Sidebar = ({ setSidebarHeight }) => {
   );
   return (
     <>
-      <div ref={ref} style={{ padding: "1%" }}>
+      <div
+        ref={ref}
+        style={{
+          height: "7%",
+          padding: "1%",
+          backgroundColor: "#EEEEEE",
+        }}
+      >
         <Button onClick={toggleDrawer(true)} color="secondary">
           <WidgetsIcon />
         </Button>
