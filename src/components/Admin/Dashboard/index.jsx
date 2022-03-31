@@ -1,11 +1,11 @@
-import React from "react";
-import { Container, Grid, Box } from "@mui/material";
+import React, { useState, useEffect, useRef } from "react";
 import Sidebar from "./Sidebar";
 
 const AdminDashboard = () => {
+  const [sidebarHeight, setSidebarHeight] = useState();
   return (
     <>
-      <Sidebar />
+      <Sidebar setSidebarHeight={setSidebarHeight} />
     </>
   );
 };

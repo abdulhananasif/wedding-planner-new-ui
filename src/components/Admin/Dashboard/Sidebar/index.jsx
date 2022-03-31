@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Box } from "@mui/material";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
@@ -6,9 +6,9 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 
-const Sidebar = () => {
+const Sidebar = ({ setSidebarHeight }) => {
   const [state, setState] = useState(false);
-
+  const ref = useRef(null);
   const toggleDrawer = (open) => (event) => {
     if (
       event.type === "keydown" &&
@@ -19,7 +19,9 @@ const Sidebar = () => {
 
     setState(open);
   };
-
+  useEffect(() => {
+    setSidebarHeight(ref.current.clientHeight);
+  }, []);
   const list = () => (
     <Box
       sx={{
@@ -49,7 +51,7 @@ const Sidebar = () => {
   );
   return (
     <>
-      <div>
+      <div ref={ref}>
         <>
           <Button onClick={toggleDrawer(true)} color="secondary">
             Click
