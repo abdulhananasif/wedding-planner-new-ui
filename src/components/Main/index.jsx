@@ -1,10 +1,10 @@
 import React from "react";
-import AdminLogin from "../Admin/Login";
+import AdminDashboard from "../Admin/Dashboard";
 
 const Main = () => {
   return (
     <>
-      <AdminLogin />
+      <AdminDashboard />
     </>
   );
 };
