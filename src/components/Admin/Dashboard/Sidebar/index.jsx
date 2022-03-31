@@ -5,6 +5,10 @@ import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import AddIcon from "@mui/icons-material/Add";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const Sidebar = ({ setSidebarHeight }) => {
   const [state, setState] = useState(false);
@@ -36,15 +40,25 @@ const Sidebar = ({ setSidebarHeight }) => {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        {["Add", "View"].map((text) => (
+        {["Add", "View"].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemText primary={text} />
+            <ListItemIcon>
+              {index % 2 === 0 ? (
+                <AddIcon sx={{ width: "100%" }} />
+              ) : (
+                <VisibilityIcon sx={{ width: "100%" }} />
+              )}
+            </ListItemIcon>
+            <ListItemText sx={{ marginLeft: "7px" }} primary={text} />
           </ListItem>
         ))}
       </List>
       <List>
         <ListItem button key={"Logout"}>
-          <ListItemText primary={"Logout"} />
+          <ListItemIcon>
+            <LogoutIcon sx={{ width: "100%" }} />
+          </ListItemIcon>
+          <ListItemText sx={{ marginLeft: "7px" }} primary={"Logout"} />
         </ListItem>
       </List>
     </Box>
